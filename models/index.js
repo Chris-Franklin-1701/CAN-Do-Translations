@@ -1,3 +1,6 @@
-const User = require('./User');
+const User = require('./user');
+const Text = require('./text');
+const Translation = require('./translation');
+const Language = require('./language');
+const Rando = require('./rando');
 
-module.exports = { User };
