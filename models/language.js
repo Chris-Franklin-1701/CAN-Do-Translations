@@ -15,6 +15,14 @@ Language.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
+        trans_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'translation',
+                key: 'id'
+            }
+        },
         // lang_id: {
         //     type: DataTypes.INTEGER,
         //     allowNull: false,

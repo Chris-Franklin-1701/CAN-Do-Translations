@@ -11,6 +11,14 @@ Translation.init(
             primaryKey: true,
             autoIncrement: true,
         },
+        text_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'text',
+                key: 'id'
+            }
+        },
         lang_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -25,7 +33,7 @@ Translation.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'language',
+        modelName: 'translation',
     }
 );
 

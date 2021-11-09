@@ -27,6 +27,14 @@ User.init(
                 len: [6],
             },
         },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+            validate: {
+                isEmail: true,
+            },
+        }
     },
     {
         hooks: {

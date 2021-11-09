@@ -19,6 +19,14 @@ Rando.init(
                 key: 'lang_name'
             }
         },
+        trans_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'translation',
+                key: 'id'
+            }
+        },
         lang_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -33,7 +41,7 @@ Rando.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'language',
+        modelName: 'rando',
     }
 );
 
