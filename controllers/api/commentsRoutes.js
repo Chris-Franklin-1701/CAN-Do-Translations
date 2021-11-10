@@ -1,5 +1,10 @@
 const router = require('express').Router();
 const { Comments, User } = require('../../models');
+const pigLatin = require('pig-latin');
+const pirateSpeak = require('pirate-speak');
+const hodor = require('hodor-api');
+const br = require('braille');
+const wordVomit = require('word-vomit');
 const withAuth = require('../../utils/auth');
 
 router.get('/:id', withAuth, async (req, res) => {
@@ -23,28 +28,31 @@ router.get('/:id', withAuth, async (req, res) => {
     }
 });
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
     try {
+
     const newComment = await Comments.create({
         ...req.body,
         user_id: req.session.user_id,
         comment: req.body.comment,
-        pig_latin: req.body.pig_latin,
-        pirate: req.body.pirate,
-        word_vomit: req.body.word_vomit,
-        braille: req.body.braille,
-        hodor: req.body.hodor,
-        poemify: req.body.poemify,
+        pig_latin: pigLatin(req.body.comment),
+        pirate: pirateSpeak.translate(req.body.comment),
+        word_vomit: wordVomit(req.body.comment),
+        braille: br.toBraille(req.body.comment),
+        hodor: hodor(req.body.comment),
+        
+        //poemify: poemify(req.body.comment),
     });
     //res.redirect('./dashboard');
 
     res.status(200).json(newComment);
     } catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 });
 
-router.post('/:id', withAuth, async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
     const commentUpdate = await Comments.update({
         ...req.body,
