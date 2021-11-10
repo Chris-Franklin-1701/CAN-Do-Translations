@@ -5,7 +5,7 @@ const Language = require('./language');
 const Rando = require('./rando');
 
 User.hasMany(Text, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
 });
 
 Text.belongsTo(User, {
@@ -21,7 +21,7 @@ Text.hasOne(Language, {
 });
 
 Translation.hasOne(Text, {
-    foreignKey: 'text_id'
+    foreignKey: 'text_id',
 })
 
 Translation.hasMany(Language, {
@@ -38,7 +38,7 @@ Rando.hasMany(Translation, {
 
 Rando.hasMany(Language, {
     foreignKey: 'lang_id'
-});
+}); 
 
 module.exports = {
     User,

@@ -37,4 +37,4 @@ Translation.init(
     }
 );
 
-module.exports = Translation;
+module.exports = Translation; 
