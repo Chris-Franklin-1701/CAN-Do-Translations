@@ -1,21 +1,20 @@
 const User = require('./user');
-const Text = require('./text');
-const Translation = require('./translation');
-const Language = require('./language');
-const Rando = require('./rando');
+const Comments = require('./comments');
+const Translations = require('./translations');
 
+<<<<<<< HEAD
 User.hasMany(Text, {
     foreignKey: 'user_id',
 });
+=======
+User.hasMany(Comments);
+>>>>>>> 657d0abaf4f6bf31258bf5f05c96ba991154c97e
 
-Text.belongsTo(User, {
-    foreignKey: 'user_id'
-});
+Comments.belongsTo(User);
 
-Text.hasOne(Translation, {
-    foreignKey: 'trans_id'
-});
+Comments.hasMany(Translations);
 
+<<<<<<< HEAD
 Text.hasOne(Language, {
     foreignKey: 'lang_id'
 });
@@ -39,11 +38,12 @@ Rando.hasMany(Translation, {
 Rando.hasMany(Language, {
     foreignKey: 'lang_id'
 }); 
+=======
+Translations.belongsTo(Comments);
+>>>>>>> 657d0abaf4f6bf31258bf5f05c96ba991154c97e
 
 module.exports = {
     User,
-    Text,
-    Translation,
-    Language,
-    Rando,
+    Comments,
+    Translations,
 };
