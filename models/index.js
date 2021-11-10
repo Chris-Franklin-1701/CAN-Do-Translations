@@ -1,6 +1,5 @@
 const User = require('./user');
 const Comments = require('./comments');
-const Translations = require('./translations');
 
 <<<<<<< HEAD
 User.hasMany(Text, {
@@ -12,6 +11,7 @@ User.hasMany(Comments);
 
 Comments.belongsTo(User);
 
+<<<<<<< HEAD
 Comments.hasMany(Translations);
 
 <<<<<<< HEAD
@@ -42,8 +42,9 @@ Rando.hasMany(Language, {
 Translations.belongsTo(Comments);
 >>>>>>> 657d0abaf4f6bf31258bf5f05c96ba991154c97e
 
+=======
+>>>>>>> bd718da4fc4654b80ad05038e50537a712ca8921
 module.exports = {
     User,
     Comments,
-    Translations,
 };

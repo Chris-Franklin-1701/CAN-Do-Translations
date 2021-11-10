@@ -27,6 +27,24 @@ Comments.init(
                 model: 'user',
                 key: 'id'
             }
+        },
+        pig_latin: {
+            type: DataTypes.STRING,
+        },
+        pirate: {
+            type: DataTypes.STRING,
+        },
+        word_vomit: {
+            type: DataTypes.STRING,
+        },
+        braille: {
+            type: DataTypes.STRING,
+        },
+        hodor: {
+            type: DataTypes.STRING,
+        },
+        poemify: {
+            type: DataTypes.STRING,
         }
     },
     {
