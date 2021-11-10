@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Translation extends Model { }
+class Comments extends Model { }
 
-Translation.init(
+Comments.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -11,30 +11,30 @@ Translation.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        text_id: {
+        comment: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        date_created: {
+            type: DataTypes.DATEONLY,
+            defaultValue: DataTypes.NOW,
+            allowNull: false,
+        },
+        user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: 'text',
+                model: 'user',
                 key: 'id'
             }
-        },
-        lang_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'language',
-                key: 'id'
-            }
-        },
+        }
     },
     {
         sequelize,
-        timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'translation',
+        modelName: 'comments',
     }
 );
 
-module.exports = Translation;
+module.exports = Comments;
