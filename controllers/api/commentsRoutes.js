@@ -29,12 +29,12 @@ router.post('/', withAuth, async (req, res) => {
         ...req.body,
         user_id: req.session.user_id,
         comment: req.body.comment,
-        pig_latin: req.body.pig_latin,
-        pirate: req.body.pirate,
-        word_vomit: req.body.word_vomit,
-        braille: req.body.braille,
-        hodor: req.body.hodor,
-        poemify: req.body.poemify,
+        // pig_latin: req.body.pig_latin,
+        // pirate: req.body.pirate,
+        // word_vomit: req.body.word_vomit,
+        // braille: req.body.braille,
+        // hodor: req.body.hodor,
+        // poemify: req.body.poemify,
     });
     //res.redirect('./dashboard');
 
