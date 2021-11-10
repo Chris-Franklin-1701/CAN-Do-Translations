@@ -1,16 +1,44 @@
 const router = require('express').Router();
-const { Comments } = require('../../models');
+const { Comments, User } = require('../../models');
 const withAuth = require('../../utils/auth');
+
+router.get('/:id', withAuth, async (req, res) => {
+    try{
+        const commentData = await Comments.findByPk(req.params.id, {
+            include: [
+                {
+                    model: Comments, attributes: ['user_id', 'comment', 'date_created'],
+                    include: [{model: User, attributes: ['name']}],
+                },
+                {
+                    model: User, attributes: ['name']
+                },
+            ],
+        });
+        const currentComment = commentData.get({ plain: true });
+        res.render('homepage', { currentComment, logged_in: req.session.logged_in});
+    }catch (err){
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
 
 router.post('/', withAuth, async (req, res) => {
     try {
-    const newText = await Text.create({
+    const newComment = await Comments.create({
         ...req.body,
         user_id: req.session.user_id,
+        comment: req.body.comment,
+        pig_latin: req.body.pig_latin,
+        pirate: req.body.pirate,
+        word_vomit: req.body.word_vomit,
+        braille: req.body.braille,
+        hodor: req.body.hodor,
+        poemify: req.body.poemify,
     });
-    res.redirect('./homepage');
+    //res.redirect('./dashboard');
 
-    res.status(200).json(newText);
+    res.status(200).json(newComment);
     } catch (err) {
         res.status(400).json(err);
     }
@@ -18,9 +46,9 @@ router.post('/', withAuth, async (req, res) => {
 
 router.post('/:id', withAuth, async (req, res) => {
     try {
-    const textUpdate = await Text.update({
+    const commentUpdate = await Comments.update({
         ...req.body,
-        user_id: req.session.user_id,
+        comment: req.body.comment,
     },
     {
         where: {
@@ -28,7 +56,7 @@ router.post('/:id', withAuth, async (req, res) => {
         }
     });
 
-    res.status(200).json(textUpdate);
+    res.status(200).json(commentUpdate);
     } catch (err) {
         res.status(400).json(err);
     }
@@ -36,18 +64,18 @@ router.post('/:id', withAuth, async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-    const textDelete = await Text.destroy({
+    const commentDelete = await Comments.destroy({
         where: {
             id: req.params.id,
         },
     });
 
-    if (!textDelete) {
-        res.status(404).json({ message: 'No text found with this id!' });
+    if (!commentDelete) {
+        res.status(404).json({ message: 'No post found with this id!' });
         return;
     }
 
-    res.status(200).json(textDelete);
+    res.status(200).json(commentDelete);
     } catch (err) {
         res.status(500).json(err);
     }
