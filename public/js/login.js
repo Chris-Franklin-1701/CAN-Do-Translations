@@ -22,4 +22,6 @@ const loginFormHandler = async (event) => {
   }
 };
 
+<a href="/signup">Don't have an account? Sign up here!</a>
+
 document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
