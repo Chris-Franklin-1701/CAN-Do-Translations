@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../models');
-// const withAuth = require('../utils/auth');
-const sequelize = require('../config/connection');//added this too
+const sequelize = require('../config/connection');
 
 // Prevent non logged in users from viewing the homepage
 router.get('/', async (req, res) => {
