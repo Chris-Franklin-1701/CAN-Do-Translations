@@ -10,7 +10,15 @@ router.post('/', (req, res) => {
   })
       .then(dbUserData => {
 
+<<<<<<< HEAD
           res.json(dbUserData);
+=======
+    req.session.save(() => {
+      req.session.name = dbUserData.name,
+      req.session.email = dbUserData.email,
+      req.session.password = dbUserData.password,
+      req.session.loggedIn = true;
+>>>>>>> 43cf225006855fa57059034195f1255ff147aef0
 
       })
       .catch(err => {
