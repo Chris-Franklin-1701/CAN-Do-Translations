@@ -7,5 +7,4 @@ router.use('/users', userRoutes);
 router.use('/comments', commentsRoutes);
 router.use('/basic', basicAccessRoutes)
 
-
 module.exports = router;
