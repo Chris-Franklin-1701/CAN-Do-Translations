@@ -13,9 +13,10 @@ router.post('/', async (req, res) => {
       req.session.name = dbUserData.name,
       req.session.email = dbUserData.email,
       req.session.password = dbUserData.password,
-      req.session.loggedIn = true;
+      req.session.user_id = dbUserData.id,
+      req.session.logged_in = true;
 
-      res.status(200).json(dbUserData);
+      res.redirect('/dashboard');
     });
   } catch (err) {
     console.log(err);
