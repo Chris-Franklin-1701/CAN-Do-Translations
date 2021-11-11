@@ -10,18 +10,17 @@ const withAuth = require('../../utils/auth');
 router.get('/:id', withAuth, async (req, res) => {
     try{
         const commentData = await Comments.findByPk(req.params.id, {
-            include: [
-                {
-                    model: Comments, attributes: ['user_id', 'comment', 'date_created'],
-                    include: [{model: User, attributes: ['name']}],
-                },
-                {
-                    model: User, attributes: ['name']
-                },
-            ],
-        });
-        const currentComment = commentData.get({ plain: true });
-        res.render('homepage', { currentComment, logged_in: req.session.logged_in});
+            attributes: ['user_id', 'comment', 'date_created'],
+                    include: [{model: User, attributes: ['name'],
+                }],
+                // {
+                //     model: User, attributes: ['name']
+                // },
+            
+            })
+        //const currentComment = commentData.get({ plain: true });
+        //res.render('homepage', { currentComment, logged_in: req.session.logged_in});
+        res.status(200).json(commentData);
     }catch (err){
         console.log(err);
         res.status(500).json(err);
