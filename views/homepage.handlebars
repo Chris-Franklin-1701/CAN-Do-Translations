@@ -1,10 +1,22 @@
-{{#each users as |user| }}
 <div class="row align-center mb-5">
-  <div class="col-md-6">
-    <h2>{{{get_emoji}}} {{user.name}}</h2>
-  </div>
-  <div class="col-md-6">
-    <h3><a href="mailto:{{user.email}}">{{user.email}}</a></h3>
-  </div>
+  <div>
+  <textarea id="input" placeholder="Please enter text here"></textarea>
+  <button class="btn btn-primary" id="btn-test">Submit</button>
+  <br>
+  <br>
+  <div id="output"></div>
 </div>
-{{/each}}
+</div>
+
+
+<script src="./js/basicAccess.js"></script>
+{{!-- NEED TO DO
+add input area
+add button to input
+script for functionality
+    fetch (/api/basic/pirate) POST
+      {input: "text from input area"}
+      .then
+      put pirate response on page
+--}}
+
