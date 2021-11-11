@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const { User } = require('../models');
-const withAuth = require('../utils/auth');
+// const withAuth = require('../utils/auth');
 const sequelize = require('../config/connection');//added this too
 
 // Prevent non logged in users from viewing the homepage
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const userData = await User.findAll({
       attributes: { exclude: ['password'] },
@@ -25,7 +25,7 @@ router.get('/', withAuth, async (req, res) => {
 
 router.get('/login', (req, res) => {
   // If a session exists, redirect the request to the homepage
-  if (req.session.logged_in) { 
+  if (req.session.logged_in) {
     res.redirect('/');
     return;
   }
@@ -41,6 +41,5 @@ router.get('/signup', (req, res) => {
 
   res.render('signup');
 });
-
 
 module.exports = router;
