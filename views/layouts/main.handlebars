@@ -20,21 +20,22 @@
     font-family: fantasy;
     font-size: 50px;
 "> CAN Do Translator
-    </h1>
-      </div>
+      </h1>
     </div>
-    <!-- Only display the logout button if the user is logged in -->
-    {{#if logged_in}}
-    <nav>
-      <button class="btn" id="logout">logout</button>
-    </nav>
-    {{/if}}
+  </div>
+  </div>
+  <!-- Only display the logout button if the user is logged in -->
+  {{#if logged_in}}
+  <nav>
+    <button class="btn" id="logout">logout</button>
+  </nav>
+  {{/if}}
   </header>
   <main class="container">
     {{{ body }}}
   </main>
   <footer>
-      
+
   </footer>
 
   <!-- Only include the logout script if the user is logged in -->
@@ -44,5 +45,3 @@
 </body>
 
 </html>
-
-
