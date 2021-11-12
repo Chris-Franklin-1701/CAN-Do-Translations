@@ -13,8 +13,10 @@ Comments.init(
         },
         comment: {
             type: DataTypes.STRING,
-            allowNull: false,
         },
+        // input: {
+        //     type: DataTypes.STRING,
+        // },
         date_created: {
             type: DataTypes.DATEONLY,
             defaultValue: DataTypes.NOW,
