@@ -31,5 +31,8 @@
     "sequelize": "^6.3.5",
     "translate-nonsense": "^0.3.1",
     "word-vomit": "^1.0.1"
+  },
+  "engines":{
+    "node": ">=17.1.0"
   }
 }
