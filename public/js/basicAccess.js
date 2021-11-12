@@ -1,23 +1,9 @@
-console.log('basic access js loaded.')
+// This is the function responsible for translating an unauthenticated user's text comment into only pirate speak
 window.onload = function() {
-    console.log('window loaded. onload running')
     const input = document.querySelector("#input");
     const btnTest = document.querySelector("#btn-test");
     const output = document.querySelector("#output");
-    console.log(JSON.stringify(btnTest))
-    // create a function that calls on basicAccessRoutes
-    // function to fetch the POST route, with the client input.
-    //print output to the html file as #output var.
-    
-    
-    // function constructUrl(text) {
-    //     return serverUrl + "?text=" + text;
-    // }
-    
-    // function errorHandler(error) {
-    //     alert("API call limit reached. Please try again in hour.");
-    // }
-    
+
     function sampleTranslation(event) {
         event.preventDefault();
         console.log('button pressed')
@@ -38,8 +24,6 @@ window.onload = function() {
     function errorHandler(){
         alert('nooooooooooo')
     }
-    
-    
-    btnTest.addEventListener("click", sampleTranslation);
 
+    btnTest.addEventListener("click", sampleTranslation);
 }

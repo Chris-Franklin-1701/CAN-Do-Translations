@@ -14,9 +14,6 @@ Comments.init(
         comment: {
             type: DataTypes.STRING,
         },
-        // input: {
-        //     type: DataTypes.STRING,
-        // },
         date_created: {
             type: DataTypes.DATEONLY,
             defaultValue: DataTypes.NOW,
@@ -30,6 +27,8 @@ Comments.init(
                 key: 'id'
             }
         },
+        // Bring in each translation module as an attribute (With the capability of being null), so that eventually when we reach the stage where a user selects their language, the new comment can be translated into whichever language they chose
+        // Additionally, as a comment is attached to the user, when the comment will eventually be saved, they can add additional translations to it without ever having lost their original translations in the process
         pig_latin: {
             type: DataTypes.STRING,
         },
