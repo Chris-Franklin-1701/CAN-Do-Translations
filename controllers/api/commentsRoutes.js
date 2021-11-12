@@ -31,22 +31,30 @@ router.get('/:id', withAuth, async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         let stringToTranslate = req.body.input;
-        stringToTranslate = req.body;
-        const newComment = await Comments.create({
-            ...req.body,
-            user_id: req.session.user_id,
-            comment: req.body.comment,
-            pig_latin: pigLatin(req.body.input),
-            pirate: pirateSpeak.translate(req.body.input),
-            word_vomit: wordVomit(req.body.input),
-            braille: br.toBraille(req.body.input),
-            hodor: hodor(req.body.input),
-
-            //poemify: poemify(req.body.comment),
+        let output = pigLatin(stringToTranslate);
+    
+        res.json({
+            input: stringToTranslate,
+            output: output,
+            translation: "pirate"
         });
-        //res.redirect('./dashboard');
+        // let stringToTranslate = req.body.input;
+        // stringToTranslate = req.body;
+        // const newComment = await Comments.create({
+        //     ...req.body,
+        //     user_id: req.session.user_id,
+        //     comment: req.body.comment,
+        //     pig_latin: pigLatin(req.body.input),
+        //     pirate: pirateSpeak.translate(req.body.input),
+        //     word_vomit: wordVomit(req.body.input),
+        //     braille: br.toBraille(req.body.input),
+        //     hodor: hodor(req.body.input),
 
-        res.status(200).json(newComment);
+        //     //poemify: poemify(req.body.comment),
+        // });
+        // //res.redirect('./dashboard');
+
+        // res.status(200).json(newComment);
     } catch (err) {
         console.log(err);
         res.status(400).json(err);
