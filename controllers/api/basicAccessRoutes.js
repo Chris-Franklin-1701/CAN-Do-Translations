@@ -1,8 +1,7 @@
 const router = require('express').Router();
 const pirateSpeak = require('pirate-speak');
 
-// we want a route that fassciltates the landing page with one ssimple translator
-//api/basic/pirate
+// The post route in which the unauthenticated user's text will only be translated into pirate speak
 router.post('/pirate', (req,res) => {
     let stringToTranslate = req.body.input;
     let output = pirateSpeak.translate(stringToTranslate);
@@ -13,7 +12,5 @@ router.post('/pirate', (req,res) => {
         translation: "pirate"
     });
 });
-
-
 
 module.exports = router;
