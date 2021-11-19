@@ -8,6 +8,10 @@ This app allows you to translate your query into a variety of different kinds of
 
 ![Sample](./public/images/project_2_screenshot.png)
 
+![Sample](./public/images/project2-2.png)
+
+![Sample](./public/images/project2-3.png)
+
 ## Deployment
 
 GitHub - (https://github.com/Chris-Franklin-1701/CAN-Do-Translations)
